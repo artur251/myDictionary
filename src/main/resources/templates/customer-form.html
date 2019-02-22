@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Egory app</title>
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <script type="text/javascript" th:src="@{/write-cheers.js}" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container">
+
+        <form action="#" th:action="@{/customer/saveCustomer}" th:object="${customer}" method="post">
+            <table class="table table-striped" border="1">
+                <tr>
+                    <input type="hidden" th:field="*{id}"/>
+                    <td><label th:text="Name"/></td>
+                    <td><input type="text" th:field="*{name}"/>
+                        <p th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></p>
+                    </td>
+                    <td><label th:text="LastName"/></td>
+                    <td><input type="text" th:field="*{lastName}"/>
+                        <p th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"></p>
+                    </td>
+                    <td><label th:text="Email"/></td>
+                    <td><input type="text" th:field="*{email}"/>
+                        <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></p>
+                    </td>
+                </tr>
+            </table>
+
+            <tr>
+                <td>
+                    <input type="submit" value="Submit" class="btn btn-success"/>
+                    <a href="/customer/list" class="btn btn-default" role="button">Back</a>
+                </td>
+            </tr>
+
+        </form>
+</div>
+</body>
+</html>
